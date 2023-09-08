@@ -1,6 +1,7 @@
 using IE_prediction
 using Test
 
+import IE_prediction
 @testset "IE_prediction.jl" begin
     @test IE_prediction.logIE_from_SMILES("CCCOC(C)C","positive", 7) == 1.1706905569667065
     @test IE_prediction.logIE_from_SMILES("CCCOC(C)C","negative", 7) == -1.3006570357939462
