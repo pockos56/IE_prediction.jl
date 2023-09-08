@@ -1,0 +1,13 @@
+name = "IE_prediction"
+uuid = "312adff7-b68f-4958-a1a5-5b35fd673321"
+authors = ["Alexandros Nikolopoulos", "Env Modeling & Computational Mass Spec Lab (EMCMS)"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.8.5"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
