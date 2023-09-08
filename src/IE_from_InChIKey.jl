@@ -13,8 +13,8 @@ pd = pyimport("padelpy")
 
 function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH)
     # Loading models
-    FP_reg_neg = jblb.load("C:\\Users\\alex_\\Documents\\GitHub\\IE_prediction\\Models\\FP_reg_neg.joblib")
-    FP_reg_pos = jblb.load("C:\\Users\\alex_\\Documents\\GitHub\\IE_prediction\\Models\\FP_reg_pos.joblib")
+    FP_reg_neg = jblb.load("src\\additional_files\\FP_reg_neg.joblib")
+    FP_reg_pos = jblb.load("src\\additional_files\\FP_reg_pos.joblib")
 
     if pH > 14 || pH < 0 
         error("Set pH to a valid value between 0 and 14")

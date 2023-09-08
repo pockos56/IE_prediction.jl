@@ -1,12 +1,23 @@
 module IE_prediction
 
-    export logIE_from_SMILES
+    # Loading packages
+    using ScikitLearn
+    using CSV
+    using Statistics
+    using DataFrames
+    using PyCall
+    using Conda
+    using DataStructures
+    jblb = pyimport("joblib")
+    pcp = pyimport("pubchempy")
+    pd = pyimport("padelpy")
+    using Pkg
+    Pkg.build("PyCall")
+
     include("IE_from_SMILES.jl")
-
-    export logIE_from_InChIKey
     include("IE_from_InChIKey.jl")
-
-    export logIE_from_CNLs
     include("IE_from_CNLs.jl")
+
+    export logIE_from_SMILES, logIE_from_InChIKey, logIE_from_CNLs
 
 end

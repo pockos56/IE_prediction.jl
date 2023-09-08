@@ -13,10 +13,10 @@ pd = pyimport("padelpy")
 
 function logIE_from_CNLs(fragments_list::Vector, precursor_ion_mz::Float64, ESI_mode::String, pH)
     # Loading models
-    CNL_reg_neg = jblb.load("C:\\Users\\alex_\\Documents\\GitHub\\IE_prediction\\Models\\CNL_reg_neg.joblib")
-    CNL_reg_pos = jblb.load("C:\\Users\\alex_\\Documents\\GitHub\\IE_prediction\\Models\\CNL_reg_pos.joblib")
-    best_CNLs_neg = CSV.read("C:\\Users\\alex_\\Documents\\GitHub\\IE_prediction\\data\\CNLmax_Hadducts_neg.CSV", DataFrame)[1:500,1]
-    best_CNLs_pos = CSV.read("C:\\Users\\alex_\\Documents\\GitHub\\IE_prediction\\data\\CNLmax_Hadducts_pos.CSV", DataFrame)[1:500,1]
+    CNL_reg_neg = jblb.load("src\\additional_files\\CNL_reg_neg.joblib")
+    CNL_reg_pos = jblb.load("src\\additional_files\\CNL_reg_pos.joblib")
+    best_CNLs_neg = CSV.read("src\\additional_files\\CNLmax_Hadducts_neg.CSV", DataFrame)[1:500,1]
+    best_CNLs_pos = CSV.read("src\\additional_files\\CNLmax_Hadducts_pos.CSV", DataFrame)[1:500,1]
 
     function mz_to_fingerprint(CNL_vec, precursor; threshold=0.02)
         # Define the range and step size for the fingerprint
