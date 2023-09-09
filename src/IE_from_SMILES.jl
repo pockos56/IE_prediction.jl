@@ -8,9 +8,7 @@ using Conda
 using DataStructures
 
 """
-    logIE_from_SMILES(SMILES, ESI_mode, pH)
-
-Predict the ionization efficiency (in log units) using canonical SMILES, the ionization mode, and the pH of the mobile phase.
+Predict the ionization efficiency (in log units) using canonical SMILES, the ionization mode of the ESI source, and the pH of the mobile phase.
 
 # Examples
 ```julia-repl

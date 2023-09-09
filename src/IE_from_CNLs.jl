@@ -10,7 +10,7 @@ using DataStructures
 """
     logIE_from_CNLs(fragment list, precursor ion m/z, ESI_mode, pH)
 
-Predict the ionization efficiency (in log units) using cumulative neutral losses, the ionization mode, and the pH of the mobile phase.
+Predict the ionization efficiency (in log units) using cumulative neutral losses, the ionization mode of the ESI source, and the pH of the mobile phase.
 
 # Examples
 ```julia-repl

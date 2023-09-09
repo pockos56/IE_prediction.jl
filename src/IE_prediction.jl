@@ -1,15 +1,12 @@
 module IE_prediction
-"""
-This is a package to predict ionization efficiency.
-"""
 
-    # Loading packages
+# Loading packages
+    #using Conda
     using ScikitLearn
     using CSV
     using Statistics
     using DataFrames
     using PyCall
-    #using Conda
     using DataStructures
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")
