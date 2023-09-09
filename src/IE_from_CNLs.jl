@@ -7,6 +7,19 @@ using PyCall
 using Conda
 using DataStructures
 
+"""
+    logIE_from_CNLs(fragment list, precursor ion m/z, ESI_mode, pH)
+
+Predict the ionization efficiency (in log units) using cumulative neutral losses, the ionization mode, and the pH of the mobile phase.
+
+# Examples
+```julia-repl
+julia> logIE_from_CNLs([30.01,30,29,2.1], 40.2,"positive", 7)
+1.3916559822536396
+julia> logIE_from_CNLs([2.1], 40.2,"negative", 7)
+-1.3750886819949022
+```
+"""
 function logIE_from_CNLs(fragments_list::Vector, precursor_ion_mz::Float64, ESI_mode::String, pH)
     jblb = pyimport("joblib")
         

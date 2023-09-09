@@ -7,7 +7,17 @@ using PyCall
 using Conda
 using DataStructures
 
+"""
+    logIE_from_InChIKey(InChIKey, ESI_mode, pH)
 
+Predict the ionization efficiency (in log units) using InChIKey, the ionization mode, and the pH of the mobile phase.
+
+# Examples
+```julia-repl
+julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N","positive", 7)
+1.1706905569667065
+```
+"""
 function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH)
 
     jblb = pyimport("joblib")
