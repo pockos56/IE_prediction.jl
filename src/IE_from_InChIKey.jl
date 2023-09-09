@@ -6,15 +6,17 @@ using DataFrames
 using PyCall
 using Conda
 using DataStructures
-jblb = pyimport("joblib")
-pcp = pyimport("pubchempy")
-pd = pyimport("padelpy")
 
 
 function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH)
+
+    jblb = pyimport("joblib")
+    pcp = pyimport("pubchempy")
+    pd = pyimport("padelpy")
+
     # Loading models
-    FP_reg_neg = jblb.load("src\\additional_files\\FP_reg_neg.joblib")
-    FP_reg_pos = jblb.load("src\\additional_files\\FP_reg_pos.joblib")
+    FP_reg_neg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_neg.joblib"))
+    FP_reg_pos = jblb.load(joinpath(@__DIR__, "data", "FP_reg_pos.joblib"))
 
     if pH > 14 || pH < 0 
         error("Set pH to a valid value between 0 and 14")
