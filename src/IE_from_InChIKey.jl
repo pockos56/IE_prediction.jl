@@ -21,6 +21,7 @@ function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH)
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")
     pd = pyimport("padelpy")
+    cd(@__DIR__)
 
     # Loading models
     FP_reg_neg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_neg.joblib"))
