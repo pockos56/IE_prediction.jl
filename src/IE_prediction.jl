@@ -19,9 +19,6 @@ This is a package to predict ionization efficiency.
     include("IE_from_InChIKey.jl")
     include("IE_from_CNLs.jl")
 
-    """
-    This is a description A
-    """
     export logIE_from_SMILES, logIE_from_InChIKey, logIE_from_CNLs
 
 end
