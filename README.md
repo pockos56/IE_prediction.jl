@@ -48,7 +48,7 @@ logIE_1 == logIE_2      # True
 ```julia
 # e.g. for an unknown compound with a m/z of 240.25 measured in negative ionization mode and at pH 9
 
-# In case of a multiple fragments with m/z 222.24, 210.24 and 179.9
+# In case of multiple fragments with m/z 222.24, 210.24 and 179.9
 using IE_prediction
 logIE_from_CNLs([222.24, 210.24, 179.9], 240.25, "negative", 5)
 
