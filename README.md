@@ -8,6 +8,10 @@ This allows semi-quantifation in electrospray ionization mass spectrometry (ESI-
 ```julia
 
 # Install dependencies
+using Pkg
+Pkg.add("PyCall")
+Pkg.add("Conda")
+
 using PyCall
 using Conda
 Conda.add("joblib")         # Package to load Python models
