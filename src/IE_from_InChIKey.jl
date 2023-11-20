@@ -39,8 +39,12 @@ function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH)
     end
 
     fingerprint = DataFrame()
-    find_comp = pcp.get_compounds(INCHIKEY, "inchikey")[1]
-    fingerprint = Int.(parse.(Float64,Matrix(DataFrame(pd.from_smiles(find_comp.isomeric_smiles,fingerprints=true, descriptors=false)))))
+    cids = pcp.get_compounds(INCHIKEY, "inchikey")
+    if isempty(cids)
+        error("CID not found: The INCHIKEY ($INCHIKEY) could not be associated with a PubChem compound.")
+    end
+    shortest_cid = cids[argmin([cids[y].cid for y in 1:length(cids)])]
+    fingerprint = Int.(parse.(Float64,Matrix(DataFrame(pd.from_smiles(shortest_cid.isomeric_smiles,fingerprints=true, descriptors=false)))))
     if size(fingerprint,2) != 780
         error("Wrong type of fingerprints was calculated. Check if the descriptors.xml file is present and set to 2DAPC")
     end
