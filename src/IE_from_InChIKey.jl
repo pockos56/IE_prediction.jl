@@ -16,25 +16,26 @@ julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N","positive", 7)
 1.1706905569667065
 ```
 """
-function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH)
+function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH; mode::String=None)
 
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")
     pd = pyimport("padelpy")
     cd(@__DIR__)
 
-    # Loading models
-    FP_reg_neg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_neg.joblib"))
-    FP_reg_pos = jblb.load(joinpath(@__DIR__, "data", "FP_reg_pos.joblib"))
-
     if pH > 14 || pH < 0 
         error("Set pH to a valid value between 0 and 14")
     end
 
+    # Loading models
     if ESI_mode == "negative" || ESI_mode == "neg"
-        reg = FP_reg_neg
+        reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_neg.joblib"))
     elseif ESI_mode == "positive" || ESI_mode == "pos"
-        reg = FP_reg_pos
+        if mode == None
+            reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_pos.joblib"))
+        else
+            reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_$mode.joblib"))
+        end
     else error("ESI_mode should be set to positive or negative")
     end
 
