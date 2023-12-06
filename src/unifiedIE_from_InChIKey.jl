@@ -12,7 +12,7 @@ julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N", 7)
 """
 INCHIKEY = "JIEJJGMNDWIGBJ-UHFFFAOYSA-N"
 pH = 7
-function ulogIE_from_InChIKey(INCHIKEY::String, pH::Float64; mode::String="")
+function ulogIE_from_InChIKey(INCHIKEY::String, pH::Float64, mode::String="")
 
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")
