@@ -16,7 +16,7 @@ julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N","positive", 7)
 1.1706905569667065
 ```
 """
-function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH; mode::String=None)
+function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH)
 
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")

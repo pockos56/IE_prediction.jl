@@ -10,7 +10,7 @@ julia> logIE_from_SMILES("CCCOC(C)C", 7)
 1.43249846779072
 ```
 """
-function ulogIE_from_SMILES(SMILES::String, pH)
+function ulogIE_from_SMILES(SMILES::String, pH; mode::String=None)
     
     jblb = pyimport("joblib")
     pd = pyimport("padelpy")
