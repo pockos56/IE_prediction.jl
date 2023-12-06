@@ -12,7 +12,7 @@ julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N", 7)
 """
 INCHIKEY = "JIEJJGMNDWIGBJ-UHFFFAOYSA-N"
 pH = 7
-function ulogIE_from_InChIKey(INCHIKEY::String, pH; mode::String=None)
+function ulogIE_from_InChIKey(INCHIKEY::String, pH::Float64; mode::String="")
 
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")
@@ -20,7 +20,7 @@ function ulogIE_from_InChIKey(INCHIKEY::String, pH; mode::String=None)
     cd(@__DIR__)
 
     # Loading models
-    if mode == None
+    if isempty(mode)
         reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_pos.joblib"))
     else
         reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_$mode.joblib"))

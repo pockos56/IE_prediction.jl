@@ -10,14 +10,14 @@ julia> logIE_from_SMILES("CCCOC(C)C", 7)
 1.43249846779072
 ```
 """
-function ulogIE_from_SMILES(SMILES::String, pH; mode::String=None)
+function ulogIE_from_SMILES(SMILES::String, pH; mode::String="")
     
     jblb = pyimport("joblib")
     pd = pyimport("padelpy")
     cd(@__DIR__)
 
     # Loading models
-    if mode == None
+    if isempty(mode)
         reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_pos.joblib"))
     else
         reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_$mode.joblib"))
