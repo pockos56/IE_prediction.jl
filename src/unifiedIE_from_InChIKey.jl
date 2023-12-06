@@ -20,7 +20,11 @@ function ulogIE_from_InChIKey(INCHIKEY::String, pH)
     cd(@__DIR__)
 
     # Loading models
-    reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg.joblib"))
+    if mode == None
+        reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_pos.joblib"))
+    else
+        reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_$mode.joblib"))
+    end
 
     if pH > 14 || pH < 0 
         error("Set pH to a valid value between 0 and 14")

@@ -31,11 +31,7 @@ function logIE_from_InChIKey(INCHIKEY::String, ESI_mode::String, pH; mode::Strin
     if ESI_mode == "negative" || ESI_mode == "neg"
         reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_neg.joblib"))
     elseif ESI_mode == "positive" || ESI_mode == "pos"
-        if mode == None
-            reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_pos.joblib"))
-        else
-            reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_$mode.joblib"))
-        end
+        reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_pos.joblib"))
     else error("ESI_mode should be set to positive or negative")
     end
 
