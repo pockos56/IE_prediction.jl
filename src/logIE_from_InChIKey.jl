@@ -6,28 +6,30 @@ Predict the ionization efficiency (in log units) using InChIKey and the pH of th
 
 # Examples
 ```julia-repl
-julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N", 7)
-1.43249846779072
+julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N", 7, "mean")
+1.56133081771261
 ```
 """
-INCHIKEY = "JIEJJGMNDWIGBJ-UHFFFAOYSA-N"
-pH = 7
-function ulogIE_from_InChIKey(INCHIKEY::String, pH::Float64, mode::String="")
-
+function logIE_from_InChIKey(INCHIKEY::Union{String, Vector{String}}, pH::Float64, data_mode::String)
+    # Packages
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")
     pd = pyimport("padelpy")
     cd(@__DIR__)
 
     # Loading models
-    if isempty(mode)
-        reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_pos.joblib"))
+    if data_mode != "min" && data_mode != "mean" && data_mode != "max"
+        error("Set data_mode to min, mean, or max")
     else
-        reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_$mode.joblib"))
+        reg = jblb.load(joinpath(@__DIR__, "data", "FP_reg_$data_mode.joblib"))
     end
 
+    # Test pH
     if pH > 14 || pH < 0 
         error("Set pH to a valid value between 0 and 14")
+    end
+    if typeof(INCHIKEY) == Vector{String}
+        error("Functionality to be implemented. Currently only single string values are accepted")
     end
 
     fingerprint = DataFrame()
