@@ -10,7 +10,7 @@ julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N", 7, "mean")
 1.56133081771261
 ```
 """
-function logIE_from_InChIKey(INCHIKEY::Union{String, Vector{String}}, pH::Float64, data_mode::String)
+function logIE_from_InChIKey(INCHIKEY::Union{String, Vector{String}}, pH, data_mode::String)
     # Packages
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")
