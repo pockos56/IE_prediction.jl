@@ -1,7 +1,7 @@
 name = "IE_prediction"
 uuid = "312adff7-b68f-4958-a1a5-5b35fd673321"
 authors = ["Alexandros Nikolopoulos", "Environmental Modeling & Computational Mass Spectrometry Lab (EMCMS)"]
-version = "0.4.0"
+version = "0.4.1"
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
