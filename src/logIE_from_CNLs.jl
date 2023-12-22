@@ -75,11 +75,6 @@ function logIE_from_CNLs(fragments_list::Vector, precursor_ion_mz::Float64, pH, 
     # Scaling
     df_all[:,1] = (df_all[:,1]) ./ 14          # pH Scaling
     df_all[:,2] = (df_all[:,2]) ./ 1000        # MONOISOMASS Scaling
-
-    # OBSOLETE: Removing minus ones for ESI- model
-    #if ESI_mode == "negative" || ESI_mode == "neg"      
-    #    df_all[1,[Vector(df_all[1,:]).==-1][1]] .= 0                # This condition should be true for the ESI- model
-    #end
     
     input = (df_all)[1,:]
     IE_pred = predict(reg, input)
