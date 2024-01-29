@@ -39,10 +39,10 @@ Pkg.add(url="https://github.com/pockos56/IE_prediction.jl")
 
 # Using the canonical SMILES, the ionization mode and the pH of the mobile phase
 using IE_prediction
-logIE_1 = logIE_from_SMILES("CCCOC(C)C","positive", 7)
+logIE_1 = logIE_from_SMILES("CCCOC(C)C", 7, "mean")
 
 # Using the InChIKey instead
-logIE_2 = logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N","positive", 7)
+logIE_2 = logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N", 7, "mean")
 logIE_1 == logIE_2      # True
 
 ```
@@ -54,9 +54,9 @@ logIE_1 == logIE_2      # True
 
 # In case of multiple fragments with m/z 222.24, 210.24 and 179.9
 using IE_prediction
-logIE_from_CNLs([222.24, 210.24, 179.9], 240.25, "negative", 5)
+logIE_from_CNLs([30.01,30,22.19,16.21], 40.2, 7, "mean")
 
 # In case of a single fragment with m/z 210.24
-logIE_from_CNLs([210.24], 240.25, "negative", 5)
+logIE_from_CNLs([22.19], 40.2, 7, "max")
 
 ```
