@@ -85,9 +85,9 @@ logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH, d
 
 2. FP_calculation
 - Defines the mode in which the input data is generated.  
-default - Suitable for a single identifier (Expected type for identifier variable: String)  
-batch - Suitable for multiple identifiers (Expected type for identifier variable: Vector{String})  
-pre-calculated - Suitable in cases when the PubChem fingerprints have been already calculated for the compounds of interest. This bypasses completely the calculation of fingerprints and the prediction model is applied directly. The **PubChem fingerprints** can be calculated with [padelpy](https://github.com/Hamada-Noreldeen/PaDELPy) (Expected type for identifier variable: DataFrame)  
+*default* - Suitable for a single identifier (Expected type for identifier variable: String)  
+*batch* - Suitable for multiple identifiers (Expected type for identifier variable: Vector{String})  
+*pre-calculated* - Suitable in cases when the PubChem fingerprints have been already calculated for the compounds of interest. This bypasses completely the calculation of fingerprints and the prediction model is applied directly. The **PubChem fingerprints** can be calculated with [padelpy](https://github.com/Hamada-Noreldeen/PaDELPy) (Expected type for identifier variable: DataFrame)  
 - Possible values: "default", "batch", "pre-calculated"
 - Default value: "default"
 
