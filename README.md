@@ -79,20 +79,20 @@ logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH, d
 
 #### Parameters
 + data_mode
-Defines the model used for the IE prediction.
-Possible values: "min", "mean", "max"
-Default value: "mean"
+- Defines the model used for the IE prediction.
+- Possible values: "min", "mean", "max"
+- Default value: "mean"
 
 + FP_calculation
-++ Defines the mode in which the input data is generated.
-    default - Suitable for a single identifier (Expected type for identifier variable: String)
-    batch - Suitable for multiple identifiers (Expected type for identifier variable: Vector{String})
-    pre-calculated - Suitable in cases when the PubChem fingerprints have been already calculated for the compounds of interest. This bypasses completely the calculation of fingerprints and the prediction model is applied directly. The *PubChem fingerprints* can be calculated with [pubchempy](https://github.com/Hamada-Noreldeen/PaDELPy) (Expected type for identifier variable: DataFrame)
-Possible values: "default", "batch", "pre-calculated"
-Default value: "default"
+- Defines the mode in which the input data is generated.
+- default - Suitable for a single identifier (Expected type for identifier variable: String)
+- batch - Suitable for multiple identifiers (Expected type for identifier variable: Vector{String})
+- pre-calculated - Suitable in cases when the PubChem fingerprints have been already calculated for the compounds of interest. This bypasses completely the calculation of fingerprints and the prediction model is applied directly. The **PubChem fingerprints** can be calculated with [padelpy](https://github.com/Hamada-Noreldeen/PaDELPy) (Expected type for identifier variable: DataFrame)
+- Possible values: "default", "batch", "pre-calculated"
+- Default value: "default"
 
 + identifier_type
-Defines which type of identifier is provided. The function automatically detects the type of fingerprint by default, but there might be cases when manual selection is useful.
-It doesn't affect the process when in pre-calculated fingerprints.
-Possible values: "auto", "SMILES", "INCHIKEY"
-Default value: "auto"
+- Defines which type of identifier is provided. The function automatically detects the type of fingerprint by default, but there might be cases when manual selection is useful.
+- It doesn't affect the process when in pre-calculated fingerprints.
+- Possible values: "auto", "SMILES", "INCHIKEY"
+- Default value: "auto"
