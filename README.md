@@ -42,11 +42,11 @@ julia> logIE_from_structure("CC(=O)OC1=CC=CC=C1C(=O)O", 2.7)
 
 # Using InChIKey and pH
 logIE_from_structure("BSYNRYMUTXBXSQ-UHFFFAOYSA-N", 2.7)
-1.2200884862831083
+> 1.2200884862831083
 
 # Predicting the minimum or maximum value of ionization efficiency
 logIE_from_structure("CCCOC(C)C", 7, "min")
-1.5592564226940018
+>1.5592564226940018
 
 # For multiple compounds, using the batch mode
 logIE_from_structure(["CCCOC(C)C", "CC(=O)OC1=CC=CC=C1C(=O)O"], [10, 10], "min", FP_calculation="batch")
