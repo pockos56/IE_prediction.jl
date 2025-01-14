@@ -126,13 +126,18 @@ function logIE_from_structure(identifier::Union{String, Vector{String}, DataFram
     end
 
     if FP_calculation == "pre-calculated"
+        
+        # Correct if only one pH value
+        if typeof(pH) == Float64 || typeof(pH) == Int
+            pH = [pH] end
+        
         # Error for incorrect pH values
         if any(pH .> 14) || any(pH .< 0)
             error("Set pH to a valid value between 0 and 14") end
 
         # Error for different size of identifiers and pH vector
         if size(identifier,1) != length(pH)
-            error("Mismatch between the size of identifiers and pH. You need to create a vector of equal size.") end
+            error("Mismatch between the size of identifiers ($(size(identifier,1))) and pH ($(length(pH))). You need to create a vector of equal size.") end
         
         # Error for wrong type of fingerprints
         if size(identifier,2) != 881
