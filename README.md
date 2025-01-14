@@ -78,12 +78,12 @@ logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH, d
 ```
 
 #### Parameters
-+ data_mode
+1. data_mode
 - Defines the model used for the IE prediction.
 - Possible values: "min", "mean", "max"
 - Default value: "mean"
 
-+ FP_calculation
+2. FP_calculation
 - Defines the mode in which the input data is generated.
 - default - Suitable for a single identifier (Expected type for identifier variable: String)
 - batch - Suitable for multiple identifiers (Expected type for identifier variable: Vector{String})
@@ -91,7 +91,7 @@ logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH, d
 - Possible values: "default", "batch", "pre-calculated"
 - Default value: "default"
 
-+ identifier_type
+3. identifier_type
 - Defines which type of identifier is provided. The function automatically detects the type of fingerprint by default, but there might be cases when manual selection is useful.
 - It doesn't affect the process when in pre-calculated fingerprints.
 - Possible values: "auto", "SMILES", "INCHIKEY"
