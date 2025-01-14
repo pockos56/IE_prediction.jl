@@ -29,7 +29,7 @@ Pkg.add(url="https://github.com/pockos56/IE_prediction.jl")
 
 ```
 
-### Documentation
+### Documentation (Basics)
 
 #### Ionization efficiency prediction for compounds with known structures
 
@@ -41,15 +41,15 @@ julia> logIE_from_structure("CC(=O)OC1=CC=CC=C1C(=O)O", 2.7)
 1.2200884862831083
 
 # Using InChIKey and pH
-julia> logIE_from_structure("BSYNRYMUTXBXSQ-UHFFFAOYSA-N", 2.7)
+logIE_from_structure("BSYNRYMUTXBXSQ-UHFFFAOYSA-N", 2.7)
 1.2200884862831083
 
 # Predicting the minimum or maximum value of ionization efficiency
-julia> logIE_from_structure("CCCOC(C)C", 7, "min")
+logIE_from_structure("CCCOC(C)C", 7, "min")
 1.5592564226940018
 
 # For multiple compounds, using the batch mode
-julia> logIE_from_structure(["CCCOC(C)C", "CC(=O)OC1=CC=CC=C1C(=O)O"], [10, 10], "min", FP_calculation="batch")
+logIE_from_structure(["CCCOC(C)C", "CC(=O)OC1=CC=CC=C1C(=O)O"], [10, 10], "min", FP_calculation="batch")
 2-element Vector{Float64}:
  1.7958649829457431       
  1.2213394324250775
@@ -68,3 +68,6 @@ logIE_from_CNLs([222.24, 210.24, 179.9], 240.25, 9, "mean")
 logIE_from_CNLs([210.24], 240.25, 9, "max")
 
 ```
+
+### Documentation (Advanced)
+
