@@ -36,11 +36,11 @@ Pkg.add(url="https://github.com/pockos56/IE_prediction.jl")
 
 ```julia
 using IE_prediction
-# Using the canonical SMILES and the pH of the mobile phase
+# Using canonical SMILES and the pH of the mobile phase
 julia> logIE_from_structure("CC(=O)OC1=CC=CC=C1C(=O)O", 2.7)
 1.2200884862831083
 
-# Using the InChIKey and pH
+# Using InChIKey and pH
 julia> logIE_from_structure("BSYNRYMUTXBXSQ-UHFFFAOYSA-N", 2.7)
 1.2200884862831083
 

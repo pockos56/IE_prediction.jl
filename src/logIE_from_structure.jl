@@ -144,12 +144,3 @@ function logIE_from_structure(identifier::Union{String, Vector{String}, DataFram
     end
 
 end
-
-
-logIE_from_structure("CCCOC(C)C", 7)
-
-identifier = ["CCC", "CCCN"]
-identifier = ["BSYNRYMUTXBXSQ-UHFFFAOYSA-N", "HUMNYLRZRPPJDN-UHFFFAOYSA-N"]
-
-test = DataFrame(pd.from_smiles(cids[1].isomeric_smiles,fingerprints=true, descriptors=false))
-test = vcat(test, DataFrame(pd.from_smiles(cids[2].isomeric_smiles,fingerprints=true, descriptors=false)))
