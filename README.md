@@ -96,3 +96,6 @@ logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH, d
 - It doesn't affect the process when in pre-calculated fingerprints.
 - Possible values: "auto", "SMILES", "INCHIKEY"
 - Default value: "auto"
+
+#### Contact info
+For more information, please send an email at: alex.nikol@icloud.com
