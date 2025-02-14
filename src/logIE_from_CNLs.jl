@@ -26,7 +26,7 @@ function logIE_from_CNLs(fragments_list::Vector, precursor_ion_mz::Float64, pH, 
     # Loading models
     if data_mode != "min" && data_mode != "mean" && data_mode != "max"
         error("Set data_mode to min, mean, or max")
-    else
+    else    # Choose 500 most common CNLs and load model
         best_CNLs_pos = CSV.read(joinpath(@__DIR__, "data", "CNLmax_Hadducts_pos.csv"), DataFrame)[1:500,1]
         reg = jblb.load(joinpath(@__DIR__, "data", "CNL_reg_$data_mode.joblib"))
     end
@@ -62,7 +62,7 @@ function logIE_from_CNLs(fragments_list::Vector, precursor_ion_mz::Float64, pH, 
         # Convert the fingerprint dictionary to a DataFrame
         dict_str = OrderedDict(string(k) => v for (k, v) in fingerprint_dict)
         fingerprint_df = DataFrame(dict_str)
-        # Change all values higher than the precursor ion to -1
+        # Change all values higher than the precursor ion to 0
         idx_precursor = findmin(abs.(Meta.parse.(names(fingerprint_df)) .- precursor))[2]
         fingerprint_df[:,idx_precursor+1:end] .= 0
         return fingerprint_df
