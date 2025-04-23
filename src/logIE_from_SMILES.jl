@@ -49,7 +49,7 @@ function logIE_from_SMILES(SMILES::Union{String, Vector{String}}, pH; data_mode:
 
         input = Matrix(hcat(pH, fingerprint))[1,:]
         IE_pred = predict(reg, input)
-        println("This function is deprecated. Please use the function logIE_from_structure instead for new features, including batch calculations and logIE predictions for pre-calculated PubChem fingerprints")
+        println("This function is deprecated. \nPlease use the function logIE_from_structure instead for new features, including batch calculations and logIE predictions for pre-calculated PubChem fingerprints")
         return IE_pred        
     end 
 end
