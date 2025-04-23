@@ -1,7 +1,6 @@
 module IE_prediction
 
 # Loading packages
-    #using Conda
     using ScikitLearn
     using CSV
     using Statistics

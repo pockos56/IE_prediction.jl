@@ -44,12 +44,9 @@ logIE_from_structure("CC(=O)OC1=CC=CC=C1C(=O)O", 2.7)
 logIE_from_structure("BSYNRYMUTXBXSQ-UHFFFAOYSA-N", 2.7)
 > 1.2200884862831083
 
-# Predicting the minimum or maximum value of ionization efficiency
-logIE_from_structure("CCCOC(C)C", 7, "min")
-> 1.5592564226940018
 
 # For multiple compounds, using the batch mode
-logIE_from_structure(["CCCOC(C)C", "CC(=O)OC1=CC=CC=C1C(=O)O"], [10, 10], "min", FP_calculation="batch")
+logIE_from_structure(["CCCOC(C)C", "CC(=O)OC1=CC=CC=C1C(=O)O"], [10, 10], FP_calculation="batch")
 > 2-element Vector{Float64}:
  1.7958649829457431       
  1.2213394324250775
@@ -62,11 +59,11 @@ logIE_from_structure(["CCCOC(C)C", "CC(=O)OC1=CC=CC=C1C(=O)O"], [10, 10], "min",
 
 # In case of multiple fragments with m/z 222.24, 210.24 and 179.9
 using IE_prediction
-logIE_from_CNLs([222.24, 210.24, 179.9], 240.25, 9, "mean")
+logIE_from_CNLs([222.24, 210.24, 179.9], 240.25, 9)
 > 3.524817834899175
 
 # In case of a single fragment with m/z 210.24
-logIE_from_CNLs([210.24], 240.25, 9, "max")
+logIE_from_CNLs([210.24], 240.25, 9)
 > 3.977743567907343
 
 ```
@@ -74,16 +71,11 @@ logIE_from_CNLs([210.24], 240.25, 9, "max")
 ### Documentation (Advanced)
 
 ``` julia
-logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH, data_mode::String="mean"; FP_calculation::String="default", identifier_type::String="auto")
+logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH; FP_calculation::String="default", identifier_type::String="auto")
 ```
 
 #### Parameters
-1. data_mode
-- Defines the model used for the IE prediction.
-- Possible values: "min", "mean", "max"
-- Default value: "mean"
-
-2. FP_calculation
+1. FP_calculation
 - Defines the mode in which the input data is generated.  
 *default* - Suitable for a single identifier (Expected type for identifier variable: String)  
 *batch* - Suitable for multiple identifiers (Expected type for identifier variable: Vector{String})  
@@ -91,7 +83,7 @@ logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH, d
 - Possible values: "default", "batch", "pre-calculated"
 - Default value: "default"
 
-3. identifier_type
+2. identifier_type
 - Defines which type of identifier is provided. The function automatically detects the type of fingerprint by default, but there might be cases when manual selection is useful.
 - It doesn't affect the process when in pre-calculated fingerprints.
 - Possible values: "auto", "SMILES", "INCHIKEY"

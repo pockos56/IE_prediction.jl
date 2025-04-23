@@ -2,15 +2,15 @@
 using ScikitLearn, CSV, Statistics, DataFrames, DataStructures, PyCall, Conda
 
 """
-Predict the ionization efficiency (in log units) using InChIKey and the pH of the mobile phase.
+Predict the ionization efficiency (in logIE units) using InChIKey and the pH of the mobile phase.
 
 # Examples
 ```julia-repl
-julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N", 7, "mean")
-1.56133081771261
+julia> logIE_from_InChIKey("JIEJJGMNDWIGBJ-UHFFFAOYSA-N", 7)
+1.4138901778271273
 ```
 """
-function logIE_from_InChIKey(INCHIKEY::Union{String, Vector{String}}, pH, data_mode::String)
+function logIE_from_InChIKey(INCHIKEY::Union{String, Vector{String}}, pH; data_mode::String="mean")
     # Packages
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")
@@ -45,6 +45,6 @@ function logIE_from_InChIKey(INCHIKEY::Union{String, Vector{String}}, pH, data_m
 
     input = Matrix(hcat(pH, fingerprint))[1,:]
     IE_pred = predict(reg, input)
-    println("This function is deprecated. Please use the function logIE_from_structure instead for new features, including batch calculations and logIE predictions for pre-calculated PubChem fingerprints")
+    println("This function is deprecated. \nPlease use the function logIE_from_structure instead for new features, including batch calculations and logIE predictions for pre-calculated PubChem fingerprints")
     return IE_pred        
 end

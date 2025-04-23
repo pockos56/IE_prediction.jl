@@ -9,17 +9,17 @@ using DataStructures
 """
     logIE_from_CNLs(fragment_list, precursor_ion_mz, pH, data_mode)
 
-Predict the ionization efficiency (in log units) using cumulative neutral losses, the ionization mode of the ESI source, and the pH of the mobile phase.
+Predict the ionization efficiency (in logIE units) using cumulative neutral losses, the ionization mode of the ESI source, and the pH of the mobile phase.
 
 # Examples
 ```julia-repl
-julia> logIE_from_CNLs([30.01,30,22.19,16.21], 40.2, 7, "mean")
-1.7351528403607068
-julia> logIE_from_CNLs([22.19], 40.2, 7, "max")
-1.78702178814918
+julia> logIE_from_CNLs([132.01,130,22.19,16.21], 140.2, 7)
+1.979554884666947
+julia> logIE_from_CNLs([22.19], 140.2, 2.7)
+2.6695226522754743
 ```
 """
-function logIE_from_CNLs(fragments_list::Vector, precursor_ion_mz::Float64, pH, data_mode::String)
+function logIE_from_CNLs(fragments_list::Vector, precursor_ion_mz::Float64, pH; data_mode::String="mean")
     # Packages
     jblb = pyimport("joblib")
 

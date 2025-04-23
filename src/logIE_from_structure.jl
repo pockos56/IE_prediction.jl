@@ -2,7 +2,7 @@
 using ScikitLearn, CSV, Statistics, DataFrames, DataStructures, PyCall, Conda, ProgressBars
 
 """
-Predict the ionization efficiency (in log units) using structural information (i.e. canonical SMILES or InChIKey) and the pH of the mobile phase.
+Predict the ionization efficiency (in logIE units) using structural information (i.e. canonical SMILES or InChIKey) and the pH of the mobile phase.
 
 # Examples
 ```julia-repl
@@ -12,16 +12,16 @@ julia> logIE_from_structure("CC(=O)OC1=CC=CC=C1C(=O)O", 2.7)
 julia> logIE_from_structure("BSYNRYMUTXBXSQ-UHFFFAOYSA-N", 2.7)
 1.2200884862831083
 
-julia> logIE_from_structure("CCCOC(C)C", 7, "min")
-1.5592564226940018
+julia> logIE_from_structure("CCCOC(C)C", 7)
+1.4138901778271273
 
-julia> logIE_from_structure(["CCCOC(C)C", "CC(=O)OC1=CC=CC=C1C(=O)O"], [10, 10], "min", FP_calculation="batch")
+julia> logIE_from_structure(["CCCOC(C)C", "CC(=O)OC1=CC=CC=C1C(=O)O"], [10, 10], FP_calculation="batch")
 2-element Vector{Float64}:
- 1.7958649829457431       
- 1.2213394324250775
+ 1.8537725639383886       
+ 1.721181701913092
 ```
 """
-function logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH, data_mode::String="mean"; FP_calculation::String="default", identifier_type::String="auto")
+function logIE_from_structure(identifier::Union{String, Vector{String}, DataFrame}, pH; data_mode::String="mean", FP_calculation::String="default", identifier_type::String="auto")
     # Packages
     jblb = pyimport("joblib")
     pcp = pyimport("pubchempy")

@@ -2,15 +2,15 @@
 using ScikitLearn, CSV, Statistics, DataFrames, DataStructures, PyCall, Conda
 
 """
-Predict the ionization efficiency (in log units) using canonical SMILES and the pH of the mobile phase.
+Predict the ionization efficiency (in logIE units) using canonical SMILES and the pH of the mobile phase.
 
 # Examples
 ```julia-repl
 julia> logIE_from_SMILES("CCCOC(C)C", 7)
-1.56133081771261
+1.4138901778271273
 ```
 """
-function logIE_from_SMILES(SMILES::Union{String, Vector{String}}, pH, data_mode::String)
+function logIE_from_SMILES(SMILES::Union{String, Vector{String}}, pH; data_mode::String="mean")
     # Packages
     jblb = pyimport("joblib")
     pd = pyimport("padelpy")
