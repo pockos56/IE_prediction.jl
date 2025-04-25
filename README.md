@@ -17,7 +17,7 @@ using Conda
 Conda.add("joblib")         # Package to load Python models
 Conda.add("padelpy")        # Package to calculate molecular fingerprints
 Conda.add("pubchempy")      # Package to calculate canonical SMILES from InCHiKey
-Conda.runconda(`install catboost=1.2.2`)       # Package to run CatBoost regression models for IE IE_prediction
+Conda.runconda(`install catboost=1.2.2`) # Package to run CatBoost regression models for IE IE_prediction
 
 using Pkg
 Pkg.build("PyCall")         # Build PyCall with the installed packages
